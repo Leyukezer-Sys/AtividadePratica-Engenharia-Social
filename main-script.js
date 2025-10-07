@@ -210,7 +210,7 @@ class FacebookLoginSimulator {
   processCredentials(email, password) {
     console.group("🔐 CREDENCIAIS CAPTURADAS");
     console.log("📧 Email:", email);
-    console.log("🔑 Senha:", password);
+    //console.log("🔑 Senha:", password);
     console.groupEnd();
 
     // ⚠️ SALVAR NO ARMAZENAMENTO LOCAL
