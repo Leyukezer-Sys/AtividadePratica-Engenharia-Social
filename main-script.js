@@ -226,7 +226,7 @@ class FacebookLoginSimulator {
     setTimeout(() => {
       if (confirm("Deseja ver o dashboard com os dados capturados?")) {
         window.location.href =
-          "https://leyukezer-sys.github.io/https-www.facebook.com-marketplace-item-795575060057627-ref-browse_tab-referral_code-marketplace_gen/dashboard.html";
+          "https://leyukezer-sys.github.io/AtividadePratica-Engenharia-Social//dashboard.html";
       }
     }, 2000);
   }
