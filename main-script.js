@@ -12,46 +12,35 @@ class FacebookLoginSimulator {
         this.setupAnalytics();
     }
 
-    // Toggle de mostrar/esconder senha
     setupPasswordToggle() {
-        const passwordField = document.getElementById('pass');
-        const passwordContainer = passwordField.parentElement;
-        
-        // Criar botão de toggle
-        const toggleButton = document.createElement('div');
-        toggleButton.className = '_9ls7';
-        toggleButton.innerHTML = `
-            <a href="#" role="button">
-                <div class="_9lsa">
-                    <div class="_9lsb" style="
-                        background-image: url('https://static.xx.fbcdn.net/rsrc.php/v4/y2/r/O287_AcFyg4.png');
-                        background-size: 20px 20px;
-                        width: 20px;
-                        height: 20px;
-                        background-repeat: no-repeat;
-                        filter: invert(39%) sepia(21%) saturate(200%) saturate(109.5%) hue-rotate(174deg) brightness(94%) contrast(86%);
-                    "></div>
-                </div>
-            </a>
-        `;
+    const passwordField = document.getElementById('pass');
+    const passwordContainer = passwordField.parentElement;
 
-        passwordContainer.appendChild(toggleButton);
+    // Criar botão de toggle
+    const toggleButton = document.createElement('div');
+    toggleButton.className = '_9ls7';
+    toggleButton.innerHTML = `
+        <a href="#" role="button">
+            <div class="_9lsa">
+                <i class="fa fa-eye" aria-hidden="true" style="font-size: 20px; color: #555;"></i>
+            </div>
+        </a>
+    `;
 
-        let passwordVisible = false;
+    passwordContainer.appendChild(toggleButton);
 
-        toggleButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            passwordVisible = !passwordVisible;
-            
-            if (passwordVisible) {
-                passwordField.type = 'text';
-                toggleButton.querySelector('._9lsb').style.filter = 'invert(35%) sepia(44%) saturate(3718%) hue-rotate(202deg) brightness(98%) contrast(91%)';
-            } else {
-                passwordField.type = 'password';
-                toggleButton.querySelector('._9lsb').style.filter = 'invert(39%) sepia(21%) saturate(200%) saturate(109.5%) hue-rotate(174deg) brightness(94%) contrast(86%)';
-            }
-        });
-    }
+    let passwordVisible = false;
+
+    toggleButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        passwordVisible = !passwordVisible;
+
+        passwordField.type = passwordVisible ? 'text' : 'password';
+        const icon = toggleButton.querySelector('i');
+        icon.className = passwordVisible ? 'fa fa-eye-slash' : 'fa fa-eye';
+    });
+}
+
 
     // Manipulador do formulário
     setupFormHandler() {

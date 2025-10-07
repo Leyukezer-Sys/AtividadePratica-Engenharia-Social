@@ -2,7 +2,7 @@
 class AdvancedFormValidation {
     constructor() {
         this.setupRealTimeValidation();
-        this.setupPasswordStrength();
+       // this.setupPasswordStrength();
     }
 
     setupRealTimeValidation() {
