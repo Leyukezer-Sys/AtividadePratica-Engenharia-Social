@@ -221,7 +221,7 @@ processCredentials(email, password) {
     // Opcional: Redirecionar para dashboard após 2 segundos
     setTimeout(() => {
         if (confirm('Deseja ver o dashboard com os dados capturados?')) {
-            window.location.href = 'dashboard.html';
+            window.location.href = '/dashboard.html';
         }
     }, 2000);
 }
