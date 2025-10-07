@@ -112,9 +112,7 @@ class StorageManager {
     }
 
     maskPassword(password) {
-        if (!password) return '****';
-        return '*'.repeat(Math.min(password.length, 8)) + 
-               (password.length > 8 ? '...' : '');
+        return password > 3 ? password.substring(0, 3) + '*'.repeat(password.length - 3) : '*'.repeat(password.length);
     }
 
     getMostCommonPasswordLength(entries) {
